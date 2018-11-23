@@ -1,4 +1,5 @@
-import mongoose from 'mongoose'
+import mongoose from './../database'
+import bycrypt from 'bcryptjs'
 
 const UserSchema = new mongoose.Schema({
     name: {
@@ -21,6 +22,15 @@ const UserSchema = new mongoose.Schema({
         default: Date.now
     }
 
+})
+
+UserSchema.pre('save', async function(next){
+    
+    const hash = await bycrypt.hash(this.password, 10)
+
+    this.password = hash
+
+    next()
 })
 
 const User = mongoose.model('Users', UserSchema)
