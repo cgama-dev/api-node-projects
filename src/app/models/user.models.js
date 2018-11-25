@@ -1,4 +1,4 @@
-import mongoose from './../database'
+import mongoose from './../../database'
 import bycrypt from 'bcryptjs'
 
 const UserSchema = new mongoose.Schema({
@@ -17,6 +17,14 @@ const UserSchema = new mongoose.Schema({
         required: true,
         select: false
     },
+    passwordResetToken: {
+        type: String,
+        select: false
+    },
+    passwordResetExpires: {
+        type: String,
+        select: false
+    },
     createdAt: {
         type: Date,
         default: Date.now
@@ -24,8 +32,8 @@ const UserSchema = new mongoose.Schema({
 
 })
 
-UserSchema.pre('save', async function(next){
-    
+UserSchema.pre('save', async function (next) {
+
     const hash = await bycrypt.hash(this.password, 10)
 
     this.password = hash
@@ -33,6 +41,6 @@ UserSchema.pre('save', async function(next){
     next()
 })
 
-const User = mongoose.model('Users', UserSchema)
+const User = mongoose.model('User', UserSchema)
 
 export default User

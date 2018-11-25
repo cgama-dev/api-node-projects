@@ -2,10 +2,10 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 
-import userRoute  from './routes/user.route'
-import projectRoute  from './routes/project.route'
+import userRoute  from './app/routes/user.route'
+import projectRoute  from './app/routes/project.route'
 
-import authMiddleware from './middlewares/auth'
+import authMiddleware from './app/middlewares/auth'
 
 const app = express()
 

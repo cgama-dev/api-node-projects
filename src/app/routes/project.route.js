@@ -6,7 +6,11 @@ const ProjectRoute = (app) => {
 
     const router = express.Router()
 
-    router.get('/', controller.get)
+    router.get('/', controller.query)
+    router.get('/:projectId', controller.get)
+    router.post('/', controller.create)
+    router.put('/:projectId', controller.update)
+    router.delete('/:projectId', controller.delete)
 
     return router
 }
