@@ -1,0 +1,13 @@
+version: '3'
+
+services: 
+  app:
+    image: api-node-projects-image
+    container_name: api-node-projects
+    build: .
+    volumes:
+      - .:/usr/src/
+    ports:
+      - "4001:3031" 
+    command: "yarn start"
+    

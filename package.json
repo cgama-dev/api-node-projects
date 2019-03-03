@@ -4,17 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node --presets babel-preset-env --plugins babel-plugin-transform-object-rest-spread src/app.js",
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel -D -d ./build ./src -s",
+    "build": "yarn clean && yarn build-babel",
+    "start": "node ./build/app.js",
+    "start:dev": "babel-node  src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-es2015": "^6.24.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
@@ -22,7 +22,13 @@
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.3.13",
     "nodemailer": "^4.7.0",
-    "nodemailer-express-handlebars": "^3.0.0",
-    "nodemon": "^1.18.6"
+    "nodemailer-express-handlebars": "^3.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1"
   }
 }

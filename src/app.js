@@ -20,6 +20,6 @@ app.use(cors())
 app.use('/auth', userRoute(app))
 app.use('/projects', authMiddleware, projectRoute(app))
 
-app.listen(5001, () => console.log('Servidor rodando'))
+app.listen(3031, () => console.log('Servidor rodando'))
 
 export default app
